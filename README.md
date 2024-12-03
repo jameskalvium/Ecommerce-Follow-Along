@@ -12,9 +12,36 @@ We have to set up the follow along ecommerce application using the MERN stack.
 
 ## Milestone 2:  Setting up the Login Page
 
- 1. we set up frontend and backend directories
- using react and tailwindcss, we have set up the frontend
-    1. we have created login page and signup page inside frontend
+  1. Frontend Setup
+    Tech Stack: React, TailwindCSS.
 
- 2. we have set up the backend with Express, Nodemon , Cors and Mongoose.
-    1. we have created the src folder with the following folders : config, controllers, middlewares and routes.
+    Features:
+
+    Responsive login form.
+    Basic input validation.
+
+    1. Created a src folder
+    2. created a components folder
+    3. inside that a folder called Auth is made.
+    4. created a LoginPage and SignUpPage
+
+    2. Backend Setup
+    Tech Stack: Express, Nodemon, CORS, Mongoose.
+
+    Directory Structure:
+
+    Copy code
+    backend/
+    src/
+    inside the src folders we have created the following folders
+    config/           # Database configuration
+    controllers/      # Business logic
+    middlewares/      # Authentication/validation logic
+    routes/           # API routes
+    server.js         # Main server entry point
+    package.json 
+
+    config/: Handles the MongoDB connection.
+    controllers/: Contains logic for login-related functionality
+    middlewares/: Custom middleware (e.g., JWT verification).
+    routes/: Defines routes like /api/login.
