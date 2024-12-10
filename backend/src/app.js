@@ -7,10 +7,10 @@ if (process.env.NODE_ENV !=='PRODUCTION'){
 
 
 const express = require('express')
-const connectDatabase = require('./DB/database')
+
 const app = express()
 
-const userRouter = require('/routes/user.route')
+const userRouter = require('./routes/user.routes.js')
 
 app.get('/',(req,res)=>{
     return res.send("Welcome to backend")

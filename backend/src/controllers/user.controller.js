@@ -1,7 +1,7 @@
-const ErrorHandler = require('../utils/ErrorHandler')
-const UserModel = reuqire( '../models/user.model')
+const UserModel = require( '../models/user.model.js')
+const ErrorHandler = require('../utils/ErrorHandler.js')
 
-export async function CreateUser(req,res){
+async function CreateUser(req,res){
     const{Name,Email,password}= req.body
     const CheckUserPresent = await UserModel.findOne({
         email:Email,
@@ -9,17 +9,18 @@ export async function CreateUser(req,res){
     });
 
     if(CheckUserPresent){
-        return res.ErrorHandler('Already present in DB');
+        return new ErrorHandler('Already present in DB',400);
        
     }
-    new newUser = new UserModel({
+    const newUser = new UserModel({
         Name:Name,
         email:Email,
         password:password,
 
     })
-    await UserModel.Save()
+    await newUser.save()
 
     return res.send('User Created Successfully');
 
 }
+module.exports=CreateUser

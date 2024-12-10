@@ -1,9 +1,9 @@
 const express = require('express');
-const {CreateUser} = require('../contollers/user.controller')
-const upload = require('../multer');
+const {createUser} = require('../controllers/user.controller.js')
+const upload = require('../middlewares/multer.js');
 
-const router = expres.Router();
+const router = express.Router();
 
-router.get('/create-user', upload.single('file'),CreateUser )
+router.get('/create-user', upload.single('file'),createUser )
 
 module.exports = router;
