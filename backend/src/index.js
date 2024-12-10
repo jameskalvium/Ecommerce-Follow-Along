@@ -5,9 +5,9 @@ if (process.env.NODE_ENV !=='PRODUCTION'){
 }
 
 
-const connectDatabase = require('./DB/database')
 const app = require('./app.js');
 const PORT =process.env.PORT;
+const connectDatabase = require('./DB/database')
 
 const server = app.listen(PORT,async() =>{
     connectDatabase();
