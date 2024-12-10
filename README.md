@@ -63,4 +63,19 @@ ________________________________________
 3.	I’ve used npm run dev to start the backend server in development mode with automatic restarts using Nodemon.
 
 
-    
+## Milestone 3: connecting a node js server to MongoDB
+
+1. I have made a node js server for the API requests.
+2. Then connected the server to MongoDB for database connection using mongoose.
+3. Initiated a file for Error Handling for the errors.
+4. Created a dotenv file to store the URL and port details.
+5. Initiated a new branch and all the changes are committed to the new branch.
+
+
+
+
+## Milestone 4:
+
+1. We created models folder for the user model for the data to be stored.
+2. We created a folder called controllers inside src to handle the logic for specific application routes. The controller file acts as a bridge between the routes and the business logic of your app.
+3. We created a multer file for Node.js applications for handling multipart/form-data, which is primarily used for file uploads. 
