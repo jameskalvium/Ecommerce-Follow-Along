@@ -79,3 +79,9 @@ ________________________________________
 1. We created models folder for the user model for the data to be stored.
 2. We created a folder called controllers inside src to handle the logic for specific application routes. The controller file acts as a bridge between the routes and the business logic of your app.
 3. We created a multer file for Node.js applications for handling multipart/form-data, which is primarily used for file uploads. 
+
+## Milestone 5:
+
+- we have created a signUp page inside src folder
+- we have created a validationObject using Regex
+- we have setup React-Router for the pages
