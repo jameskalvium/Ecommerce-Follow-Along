@@ -1,9 +1,24 @@
-import React from 'react'
-
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 function LoginPage() {
-    
+  const [credentials, setCreds] = useState({
+    email: '',
+    password: '',
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
+    setCreds({
+      ...credentials,
+      [name]: value,
+    });
+  };
+  const handleClickLogin = () => {
+    // axios request to backend
+  };
+
   return (
-    <div class="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen">
 
 <form action="#" className="space-y-6">
 <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
@@ -21,7 +36,7 @@ function LoginPage() {
               
               name="email"
               type="email"
-              
+              onChange={handleChange}
               placeholder="abc@example.com"
               className="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500"
             />
@@ -38,6 +53,7 @@ function LoginPage() {
               
               name="password"
               type="password"
+              onChange={handleChange}
               placeholder="*****"
               className="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 focus:border-indigo-500 focus:ring-indigo-500"
             />
