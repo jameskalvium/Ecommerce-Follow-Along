@@ -85,3 +85,7 @@ ________________________________________
 - we have created a signUp page inside src folder
 - we have created a validationObject using Regex
 - we have setup React-Router for the pages
+
+## Milestone 6:
+
+ - milestone 6 completed
