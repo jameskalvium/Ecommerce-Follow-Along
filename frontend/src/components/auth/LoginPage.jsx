@@ -1,21 +1,21 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 function LoginPage() {
-  const [credentials, setCreds] = useState({
-    email: '',
-    password: '',
-  });
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    console.log(name, value);
-    setCreds({
-      ...credentials,
-      [name]: value,
-    });
-  };
-  const handleClickLogin = () => {
-    // axios request to backend
-  };
+  // const [credentials, setCreds] = useState({
+  //   email: '',
+  //   password: '',
+  // });
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   console.log(name, value);
+  //   setCreds({
+  //     ...credentials,
+  //     [name]: value,
+  //   });
+  // };
+  // const handleClickLogin = () => {
+  //   // axios request to backend
+  // };
 
   return (
     <div className="flex items-center justify-center h-screen">
