@@ -21,7 +21,8 @@ function SignupForm() {
     // console.log(data);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const NameV = ValidationFormObject.validteName(data.name);
     const EmailV = ValidationFormObject.validteEmail(data.email);
     const PassV = ValidationFormObject.validtePass(data.password);
