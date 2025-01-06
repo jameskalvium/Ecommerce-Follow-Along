@@ -89,3 +89,13 @@ ________________________________________
 ## Milestone 6:
 
  - milestone 6 completed
+
+
+ ## Milestone 7:
+
+  - In this milestone we have created routes for login and signup
+  - Login
+    1. Got data  sent cont { email, password}= req.body
+    2. Checking if the user entry is present in DB and compared the password.
+      1. if yes -> create a token and send that as cookies 
+      2. if no -> return saying Signup first
