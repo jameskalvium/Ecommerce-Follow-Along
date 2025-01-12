@@ -104,3 +104,10 @@ ________________________________________
   ## Milestone 8:
     1. Made a card component 
     2. Displayed the cards on the products page
+
+
+ ## Milestone9:
+  1. Design the product card
+  2. Added many product images
+  3. Displayed saved products
+  
