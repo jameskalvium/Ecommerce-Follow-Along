@@ -102,5 +102,5 @@ ________________________________________
 
 
   ## Milestone 8:
-    - Made a card component 
-    - Displayed the cards on the products page
+    1. Made a card component 
+    2. Displayed the cards on the products page
