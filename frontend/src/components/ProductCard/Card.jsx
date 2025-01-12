@@ -5,7 +5,7 @@ function Card({ title, Index }) {
       {/* Image Container */}
       <div className="relative">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI2jpJZRe_IxS6W-PFk5L1BuqPr8GUZ-r77A&s"
+          src="https://cdnmedia.placewellretail.com/pub/media/catalog/product/cache/d2f155c8ae3423b25125c336aa39579e/s/a/samsung_galaxy_s24_ultra_titanium_black.webp"
           alt="Product"
           className="w-full h-48 object-cover"
         />
@@ -24,21 +24,21 @@ function Card({ title, Index }) {
 
         {/* Description */}
         <p className="text-gray-600 text-sm mb-4">
-          Premium wireless headphones with active noise cancellation and 30-hour
-          battery life.
+        With super-bright screens, powerful processors and long-lasting batteries, you can now scroll, stream and game for even longer.
+
         </p>
 
         {/* Rating */}
         <div className="flex items-center mb-4">
-          <span className="ml-2 text-sm text-gray-600">(4.5)</span>
+          <span className="ml-2 text-sm text-gray-600">(5)</span>
         </div>
 
         {/* Price Section */}
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xl font-bold text-gray-900">$199.99</span>
+            <span className="text-xl font-bold text-gray-900">$1199</span>
             <span className="ml-2 text-sm text-gray-500 line-through">
-              $249.99
+              $1200
             </span>
           </div>
           <button className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors duration-200">

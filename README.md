@@ -99,3 +99,15 @@ ________________________________________
     2. Checking if the user entry is present in DB and compared the password.
       1. if yes -> create a token and send that as cookies 
       2. if no -> return saying Signup first
+
+
+  ## Milestone 8:
+    1. Made a card component 
+    2. Displayed the cards on the products page
+
+
+ ## Milestone9:
+  1. Design the product card
+  2. Added many product images
+  3. Displayed saved products
+  

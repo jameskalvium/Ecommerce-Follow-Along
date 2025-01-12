@@ -1,28 +1,27 @@
 import { useState } from 'react';
-import Card from '../component/ProductCard/Card';
+import Card from '../components/ProductCard/Card';
 
 function HomePage() {
-  const [data, ] = useState(
+  const [data, setdata ] = useState(
     new Array(20).fill({ title: 'Product Title' })
   );
 
   console.log(data);
 
   return (
-    <>
-      <h1 className="text-center">Home Page fro Follow along</h1>
+    <div>
+      <h1 className="text-center">Home Page for Follow Along</h1>
 
       <div className="grid grid-cols-3">
         {data.map((ele, index) => {
-          return (
-            // eslint-disable-next-line react/jsx-key
-            <div style={{ margin: 'auto' }}>
-              <Card title={ele.title} Index={index} />;
-            </div>
-          );
+        return (
+          <div key={index} style={{ margin: 'auto' }} className="border border-white">
+            <Card title={ele.title} Index={index} />
+          </div>
+        );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
