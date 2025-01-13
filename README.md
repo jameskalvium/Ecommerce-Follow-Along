@@ -114,4 +114,6 @@ ________________________________________
 
 ## Milestone10:
 
- 1. 
+ 1. I have created the Schema for the product.
+ 2. I have created the end point to write data into the Database.
+ 3. I have also installed cloudinary and multer packages
