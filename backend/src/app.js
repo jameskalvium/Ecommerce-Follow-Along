@@ -1,14 +1,17 @@
+
+const express = require('express')
+
+const app = express()
+
+
 if (process.env.NODE_ENV !=='PRODUCTION'){
     require('dotenv').config({
         path:'/src/config/.env'
     })
 }
 
+const productRouter = require('./routes/product.route.js');
 
-
-const express = require('express')
-
-const app = express()
 
 const userRouter = require('./routes/user.routes.js')
 
@@ -20,6 +23,8 @@ app.get('/',(req,res)=>{
 
 
 app.use('/user',userRouter)
+
+app.use('/product', productRouter);
 
 
 

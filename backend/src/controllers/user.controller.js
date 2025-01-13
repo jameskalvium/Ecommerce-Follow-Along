@@ -7,9 +7,9 @@ const jwt=require('jsonwebtoken')//tokenisation  of user data
 const bcrypt = require('bcrypt') // hashes the password
 
 require('dotenv').config({
-    path:'./src/config/.env',
+    path:"../config/.env",
 });
-async function createUser(req,res){
+async function CreateUser(req,res){
     const {Name,email,password}=req.body
     const checkUserPresent=await userModel.findOne({
         email:email, //user schema
@@ -142,4 +142,4 @@ const login = async (req, res) => {
     return res.status(403).send({ message: er.message, success: false });
   }
 };
-module.exports = { CreateUSer, verifyUserController, signup, login };
+module.exports = { CreateUser, verifyUserController, signup, login };
