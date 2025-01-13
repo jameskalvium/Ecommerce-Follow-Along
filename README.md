@@ -117,3 +117,9 @@ ________________________________________
  1. I have created the Schema for the product.
  2. I have created the end point to write data into the Database.
  3. I have also installed cloudinary and multer packages
+
+
+ ## Milestone11;
+
+  1. I have written the endpoints to fetch data from the Database and send data to the client.
+  
