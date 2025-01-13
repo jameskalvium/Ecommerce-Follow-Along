@@ -124,3 +124,7 @@ ________________________________________
   ### Features
   1. I have written the endpoints to fetch data from the Database and send data to the client.
 
+ ## Milestone12
+
+  1. Fetched data from the database
+  2. Displayed the data in the Card.
