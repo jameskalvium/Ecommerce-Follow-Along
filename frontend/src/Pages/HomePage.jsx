@@ -3,11 +3,6 @@ import Card from '../components/ProductCard/Card';
 import axios from 'axios';
 
 function HomePage() {
-  // const [data, setdata ] = useState(
-  //   new Array(20).fill({ title: 'Product Title' })
-  // );
-
-
   const [data, setdata] = useState();
   const fetchProduct = async () => {
     const response = await axios.get(
@@ -16,6 +11,7 @@ function HomePage() {
     setdata(response.data.data);
     // console.log(response);
   };
+
   useEffect(() => {
     console.log('clicked');
 
@@ -24,17 +20,17 @@ function HomePage() {
     };
     callhandle();
   }, []);
-
   console.log(data);
 
   return (
     <div>
-      <h1 className="text-center">Home Page for Follow Along</h1>
+      <h1 className="text-center">Home Page for Follow along</h1>
 
       <div className="grid grid-cols-3">
         {data?.map((ele, index) => {
-        return (
-          <div key={index} style={{ margin: 'auto' }} className="border border-white">
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <div style={{ margin: 'auto' }} className="border border-white">
               <Card
                 title={ele.title}
                 image={ele.images[0] ? ele.images[0] : 'Product Image missing'}
@@ -43,6 +39,7 @@ function HomePage() {
                 originalPrice={ele.originalPrice}
                 discountedPrice={ele.discountedPrice}
                 rating={ele.rating}
+                id={ele._id}
               />
             </div>
           );
