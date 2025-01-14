@@ -140,3 +140,8 @@ ________________________________________
     1. I have added a delete functionality for the products
     2. Added a button in the frontend and made a function for it.
     3. Added a route for it.
+
+  ## Milestone15
+
+    1. Added navbar
+    2. I have wrapped all the routes inside the Navbar.
