@@ -128,3 +128,15 @@ ________________________________________
 
   1. Fetched data from the database
   2. Displayed the data in the Card.
+
+  ## Milestone13
+
+    1. I have created an update functionality for the products
+    2. Using PUT method to update the data
+    3. Added a button for updating the data in the frontend
+
+  ## Milestone14
+
+    1. I have added a delete functionality for the products
+    2. Added a button in the frontend and made a function for it.
+    3. Added a route for it.
