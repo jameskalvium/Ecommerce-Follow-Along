@@ -6,9 +6,9 @@ const storage = multer.diskStorage({
     cb(null,path.join(__dirname, '../temp-uploads'));
   },
 
-  filename: function (req, file, cb) {
+  filename: function (req, files, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix+'.png');
+    cb(null, files.fieldname + '-' + uniqueSuffix+'.png');
   },
 });
 
