@@ -47,7 +47,7 @@ function SignupForm() {
     // axios request
 
     const formDataBody = new FormData();
-    formDataBody.append('emal',data.email);
+    formDataBody.append('email',data.email);
     formDataBody.append('password', data.password);
     formDataBody.append('name', data.name);
     formDataBody.append('file', data.file);

@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { Upload } from 'lucide-react';
 import axios from 'axios';
+
 function ProductEntryPage() {
+  
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -13,7 +15,7 @@ function ProductEntryPage() {
     category: '',
   });
   const [errorInput, setInputError] = useState('');
-  const [Images, setImages] = useState(null);
+  const [Images, setImages] = useState([]);
 
   const handleImageUpload = (e) => {
     const ImagesArray = Array.from(e.target.files);
@@ -66,20 +68,16 @@ function ProductEntryPage() {
     formDataBody.append('token', localStorage.getItem('token'));
 
     Images.map((ele) => {
-      formDataBody.append('filepath', ele);
+      formDataBody.append('files', ele);
     });
 
     console.log(formDataBody);
+
+    const token = localStorage.getItem('token');
+    let requestdata = await axios
+
     
-  //   axios.post('http://localhost:8080/product/create-product', formData, {
-  //     headers: {
-  //       'Content-Type': 'multi-part/form-data',
-  //     },
-  //   });
-
-
-  let requestdata = await axios
-      .post('http://localhost:8080/product/create-product', formDataBody, {
+      axios.post(`http://localhost:8080/product/create-product?token=${token}`, formDataBody, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -92,6 +90,7 @@ function ProductEntryPage() {
         console.log('error', er);
         return er;
       });
+
     for (let pair of formDataBody.entries()) {
       if (pair[1] instanceof File) {
         console.log(
@@ -101,9 +100,7 @@ function ProductEntryPage() {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
     }
-
   };
-  
 
   return (
     <div

@@ -38,12 +38,11 @@ function HomePage() {
           return (
             // eslint-disable-next-line react/jsx-key
             <div style={{ margin: 'auto' }} className="border border-white">
+              key={ele._id || index}
              <Link to={`/product-details/${ele._id}`}>
                 <Card
                   title={ele.title}
-                  image={
-                    ele.images[0] ? ele.images[0] : 'Product Image missing'
-                  }
+                  image={ele.images[0] ? ele.images[0] : 'Product Image missing' }
                   Index={index}
                   description={ele.description}
                   originalPrice={ele.originalPrice}

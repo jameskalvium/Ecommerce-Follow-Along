@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 
 const cors = require('cors');
 
+const cartRouter = require('./routes/cart.route.js')
+
 if (process.env.NODE_ENV !=='PRODUCTION'){
     require('dotenv').config({
         path:'/src/config/.env'
@@ -31,6 +33,7 @@ app.use('/user',userRouter)
 
 app.use('/product', productRouter);
 
+app.use('/cart', cartRouter);
 
 
 module.exports = app;
