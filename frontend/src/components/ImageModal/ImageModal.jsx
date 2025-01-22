@@ -1,8 +1,8 @@
  
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
-function ImageModal (props) {
-    console.log(props);
+function ImageModal ({product, selectedImage, setSelectedImage, setShowImageModal}) {
+    // console.log(props);
     return (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
       <button

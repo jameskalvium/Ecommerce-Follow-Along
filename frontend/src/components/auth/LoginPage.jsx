@@ -3,27 +3,29 @@ import { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
+
 function LoginPage() {
   const [credentials, setCreds] = useState({
     email: '',
     password: '',
   });
-  const navigate = useNavigate();
+  const navigateUser = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
+    console.log(name, value); 
     setCreds({
       ...credentials,
       [name]: value,
     });
   };
-  const handleClickLogin = async() => {
+  const handleClickLogin = async(e) => {
     // axios request to backend
-    const response = await axios.post('http://8080/user/login');
+    e.preventDefault()
+    const response = await axios.post('http://localhost:8080/user/login', credentials);
     localStorage.setItem('token', response.data.token);
     // console.log(data);
-    navigate('/')
+    navigateUser('/')
   };
 
    return (

@@ -54,7 +54,7 @@ async function CreateUser(req, res) {
 
 const generateToken = (data) => {
   const token = jwt.sign(
-    { name: data.name, email: data.email },
+    { name: data.name, email: data.email, id : data.id },
     process.env.SECRET_KEY
   );
   return token;
@@ -85,18 +85,17 @@ async function verifyUserController(req, res) {
 
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(req.file);
   try {
     const checkUserPresentinDB = await UserModel.findOne({ email: email });
     if (checkUserPresentinDB) {
       return res.status(403).send({ message: 'User already present' });
     }
 
-    console.log(req.file, process.env,cloud_name);
-    const ImageAddress = await cloudinary.uploader
-    .upload(req.file.path, {
+    // console.log(req.file, process.env,cloud_name);
+    const ImageAddress = await cloudinary.uploader.upload(req.file.path, {
       folder: 'uploads',
-    })
-    .then((result) => {
+    }).then((result) => {
       fs.unlinkSync(req.file.path);
       return result.url;
     });
@@ -111,7 +110,7 @@ const signup = async (req, res) => {
         }
         await UserModel.create({
           Name: name,
-          email,
+          Email: email,
           password: hashedPassword,
           avatar: {
             url: ImageAddress,
@@ -133,6 +132,7 @@ const signup = async (req, res) => {
 };
 const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email)
   try {
     const checkUserPresentinDB = await UserModel.findOne({ email: email });
 

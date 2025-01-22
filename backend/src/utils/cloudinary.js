@@ -4,6 +4,8 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
     path: '../config/.env',
   });
 }
+// console.log(cloud_name,api_key,api_secret)
+
 cloudinary.config({
   cloud_name: process.env.cloud_name,
   api_key: process.env.api_key,

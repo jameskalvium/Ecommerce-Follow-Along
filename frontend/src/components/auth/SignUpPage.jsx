@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ValidationFormObject from '../../validation.js';
-import { Link , useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 function SignupForm() {
   const [data, setData] = useState({
@@ -10,11 +10,9 @@ function SignupForm() {
     file: '',
   });
   const [error, setError] = useState('');
-  // name
-  // pass
-  // email
   const navigateUser = useNavigate();
   const handleChange = (e) => {
+
     const { name, value,files} = e.target;
     if (name=='file'){
       setData({
@@ -47,7 +45,7 @@ function SignupForm() {
     // axios request
 
     const formDataBody = new FormData();
-    formDataBody.append('emal',data.email);
+    formDataBody.append('email',data.email);
     formDataBody.append('password', data.password);
     formDataBody.append('name', data.name);
     formDataBody.append('file', data.file);
@@ -60,7 +58,7 @@ function SignupForm() {
       });
       navigateUser('/login');
 
-    }catch(er){
+    }catch(erro){
       console.log('Somthing went wrong' + er.message);
     }
 
