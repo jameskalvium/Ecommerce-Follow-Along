@@ -5,7 +5,7 @@ if(process.env.NODE !== 'PRODUCTION'){
 });
 }
 
-const verifyUser = (err, req, res, next) =>{
+const verifyUser = (req, res, next) =>{
     const {token} = req.query;
     console.log(req.query)
     if(!token){

@@ -16,7 +16,7 @@ function Card({
   const handleAddToCart = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.post(
+      await axios.post(
         `http://localhost:8080/cart/add-to-cart?token=${token}`,
         { productId: id, quantity: 1 }
       );

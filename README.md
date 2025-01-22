@@ -153,3 +153,9 @@ ________________________________________
     3. Signup frontend and backend changes
     4. Product entry both frontend and backend changes
     
+  ## Milestone17
+
+  1. I have created the cart Schema
+  2. Added the cart route
+  3. Added the route to app.js
+  

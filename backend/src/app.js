@@ -1,6 +1,6 @@
-
 const express = require('express')
 
+const userRouter = require('./routes/user.routes.js')
 const app = express()
 const cookieParser = require('cookie-parser');
 
@@ -17,7 +17,6 @@ if (process.env.NODE_ENV !=='PRODUCTION'){
 const productRouter = require('./routes/product.route.js');
 
 
-const userRouter = require('./routes/user.routes.js')
 
 app.use(express.json());
 app.use(cors());
