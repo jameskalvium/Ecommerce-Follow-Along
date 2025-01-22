@@ -17,7 +17,8 @@ const SchemaObject = {
         ,
     },
   ],
-  
+  userEmail: {type: String},  
+
 };
 const productSchema = new mongoose.Schema(SchemaObject, { versionKey: false });
 const ProductModel = mongoose.model('Product', productSchema);

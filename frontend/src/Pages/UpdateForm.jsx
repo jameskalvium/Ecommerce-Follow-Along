@@ -64,12 +64,22 @@ function UpdateForm() {
     formDataBody.append('originalPrice', originalPrice);
     formDataBody.append('quantity', quantity);
     formDataBody.append('rating', rating);
+    console.log(Images)
 
+
+    if(Images){
     Images?.map((ele) => {
-      formDataBody.append('filepath', ele);
+      formDataBody.append('files', ele);
     });
+    } else {
+      formDataBody.append('images',formData.images)
+     }
 
-    console.log(formDataBody);
+    console.log('formDataBody',formDataBody);
+    console.log('Images',Images);
+    console.log('formData.images',formData)
+
+
     let requestdata = await axios
       .put(
         `http://localhost:8080/product/update-products/${id}`,

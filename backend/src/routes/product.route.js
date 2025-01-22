@@ -8,11 +8,13 @@ const {
   getSingleProductDocumentController,
   deleteSingleProduct,
 } = require('../controllers/product.controller.js');
+const verifyUser = require('../middlewares/jwt-verify.js');
 const router = express.Router();
 
 router.post(
   '/create-product',
   upload.array('files', 5),
+  verifyUser,
   createProductController
 );
 

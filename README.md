@@ -145,3 +145,11 @@ ________________________________________
 
     1. Added navbar
     2. I have wrapped all the routes inside the Navbar.
+
+  ## Milestone16
+
+    1. I have created a single page for the products
+    2. I have created image modal for the single photos
+    3. Signup frontend and backend changes
+    4. Product entry both frontend and backend changes
+    

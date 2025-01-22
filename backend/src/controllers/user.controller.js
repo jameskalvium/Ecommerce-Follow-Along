@@ -3,6 +3,9 @@ const ErrorHandler = require('../utils/ErrorHandler.js');
 const transporter = require('../utils/sendMail.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const fs = require('fs')
+const cloudinary = require('../utils/cloudinary.js');
+
 
 require('dotenv').config({
   path: '../config/.env',
@@ -37,8 +40,8 @@ async function CreateUser(req, res) {
   };
   const token = generateToken(data);
   await transporter.sendMail({
-    to: 'kodagian1137@gmail.com',
-    from: 'kodagian1137@gmail.com',
+    to: 'james.r@kalvium.community.in',
+    from: 'jamesrjacob9747@gmail.com',
     subject: 'Verification email from Follow-Along project',
     text: 'Text',
     html: `<h1>Hello world   http://localhost:5173/activation/${token} </h1>`,
@@ -88,6 +91,19 @@ const signup = async (req, res) => {
       return res.status(403).send({ message: 'User already present' });
     }
 
+    console.log(req.file, process.env,cloud_name);
+    const ImageAddress = await cloudinary.uploader
+    .upload(req.file.path, {
+      folder: 'uploads',
+    })
+    .then((result) => {
+      fs.unlinkSync(req.file.path);
+      return result.url;
+    });
+
+  console.log('url', ImageAddress);
+
+
     bcrypt.hash(password, 10, async function (err, hashedPassword) {
       try {
         if (err) {
@@ -97,10 +113,15 @@ const signup = async (req, res) => {
           Name: name,
           email,
           password: hashedPassword,
+          avatar: {
+            url: ImageAddress,
+            public_id: `${email}_public_id`
+          },
         });
 
         return res.status(201).send({ message: 'User created successfully..' });
       } catch (er) {
+        console.log(er)
         return res.status(500).send({ message: er.message });
       }
     });
@@ -132,7 +153,11 @@ const login = async (req, res) => {
         return res
           .status(200)
           .cookie('token', token)
-          .send({ message: 'User logged in successfully..', success: true });
+          .send({
+            message: 'User logged in successfully...',
+            success:true,
+            token,
+          });
       }
     );
   } catch (er) {
