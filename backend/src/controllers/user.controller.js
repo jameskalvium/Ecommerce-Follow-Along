@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const fs = require('fs')
 const cloudinary = require('../utils/cloudinary.js');
 
+const { default: mongoose } = require('mongoose');
 
 require('dotenv').config({
   path: '../config/.env',
@@ -133,9 +134,14 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   console.log(email)
+  console.log("password", password)
   try {
-    const checkUserPresentinDB = await UserModel.findOne({ email: email });
+    const checkUserPresentinDB = await UserModel.findOne({ Email: email });
+    console.log(checkUserPresentinDB);
 
+    if(!checkUserPresentinDB){
+      return res.status(404).send({message:"User not found", success:false})
+    }
     bcrypt.compare(
       password,
       checkUserPresentinDB.password,
@@ -165,4 +171,31 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { CreateUser, verifyUserController, signup, login };
+
+const getUserData = async (req, res) => {
+  const userId = req.UserId;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(401).send({ message: 'Send Valid User Id' });
+    }
+
+    const checkUserPresentinDB = await UserModel.findOne({ _id: userId });
+    if (!checkUserPresentinDB) {
+      return res
+        .status(401)
+        .send({ message: 'Please Signup, user not present' });
+    }
+
+    return res.status(200).send({ data: checkUserPresentinDB });
+  } catch (er) {
+    return res.status(500).send({ message: er.message });
+  }
+};
+
+module.exports = {
+  CreateUser,
+  verifyUserController,
+  signup,
+  login,
+  getUserData,
+};

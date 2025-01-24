@@ -9,7 +9,7 @@ function LoginPage() {
     email: '',
     password: '',
   });
-  const navigateUser = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,10 +22,15 @@ function LoginPage() {
   const handleClickLogin = async(e) => {
     // axios request to backend
     e.preventDefault()
-    const response = await axios.post('http://localhost:8080/user/login', credentials);
+    try {
+    const response = await axios.post('http://localhost:8080/user/login',credentials);
     localStorage.setItem('token', response.data.token);
-    // console.log(data);
-    navigateUser('/')
+    console.log('Logged in successfully',credentials);
+    navigate('/')
+    }catch(error){
+      console.log('Error during the login:',error);
+      alert('Login failed. Please check your credentials');
+    }
   };
 
    return (
@@ -55,7 +60,7 @@ function LoginPage() {
                 type="email"
                 name="email"
                 id="email"
-                
+                autoComplete="email"
                 required
                 value={credentials.email}
                 onChange={handleChange}
@@ -86,8 +91,11 @@ function LoginPage() {
                 type="password"
                 name="password"
                 id="password"
+                autoComplete="current-password"
                 required
+                value={credentials.password}
                 onChange={handleChange}
+                placeholder='Enter your password'
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
               />
             </div>
@@ -98,7 +106,7 @@ function LoginPage() {
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Sign in
+              Login
             </button>
           </div>
           <p className="text-center"> Dont have an account ? <Link to={'/signup'}>Sign up</Link>
