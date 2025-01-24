@@ -158,4 +158,14 @@ ________________________________________
   1. I have created the cart Schema
   2. Added the cart route
   3. Added the route to app.js
-  
+
+
+## Milestone18
+
+  1. Added the cart route (/get-user-cart-data)
+  2. Edited the cart controller.js
+
+## Milestone19
+
+  1. I have created the UI
+  2. We are fetching the details of the user from the database
