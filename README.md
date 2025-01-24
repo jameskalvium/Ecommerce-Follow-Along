@@ -174,3 +174,7 @@ ________________________________________
 
   1. I have created the Profile page
   2. I have created the route for the user data
+
+## Milestone21
+
+  1. I have created an Address component
