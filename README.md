@@ -169,3 +169,8 @@ ________________________________________
 
   1. I have created the UI
   2. We are fetching the details of the user from the database
+
+## Milestone20
+
+  1. I have created the Profile page
+  2. I have created the route for the user data

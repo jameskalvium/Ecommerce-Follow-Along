@@ -6,9 +6,12 @@ const {
   verifyUserController,
   signup,
   login,
+  getUserData
 } = require('../controllers/user.controller.js');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'temp-uploads/' });
+
+const verifyUser = require('../middlewares/jwt-verify.js');
 
 const router = express.Router();
 
@@ -17,5 +20,7 @@ router.get('/activation/:token', verifyUserController);
 
 router.post('/signup',upload.single('file'), signup);
 router.post('/login', login);
+
+router.get('/user-data', verifyUser, getUserData);
 
 module.exports = router;
