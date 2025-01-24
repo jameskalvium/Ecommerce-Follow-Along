@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddressCard = () => {
   const [city, setCity] = useState("");
@@ -7,8 +9,9 @@ const AddressCard = () => {
   const [add2, setAdd2] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [addressType, setAddressType] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const addressData = {
       city,
@@ -19,6 +22,16 @@ const AddressCard = () => {
       addressType,
     };
     console.log(addressData);
+
+    const token = localStorage.getItem('token');
+    if(!token){
+        return alert('Token missing')
+    }
+
+    const response = await axios.post(
+        `http://localhost:8080/user/add-address?token=${token}`,addressData
+    )
+    navigate('/profile');
   };
 
   return (
@@ -26,27 +39,7 @@ const AddressCard = () => {
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-96">
         <h3 className="text-xl font-bold mb-4">Address Details</h3>
 
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Address Line 1</label>
-          <input
-            type="text"
-            value={add1}
-            onChange={(e) => setAdd1(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Address Line 2</label>
-          <input
-            type="text"
-            value={add2}
-            onChange={(e) => setAdd2(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-          />
-        </div>
-
+        {/* City */}
         <div className="mb-4">
           <label className="block mb-1 font-medium">City</label>
           <input
@@ -58,6 +51,7 @@ const AddressCard = () => {
           />
         </div>
 
+        {/* Country */}
         <div className="mb-4">
           <label className="block mb-1 font-medium">Country</label>
           <input
@@ -69,6 +63,30 @@ const AddressCard = () => {
           />
         </div>
 
+        {/* Address Line 1 */}
+        <div className="mb-4">
+          <label className="block mb-1 font-medium">Address Line 1</label>
+          <input
+            type="text"
+            value={add1}
+            onChange={(e) => setAdd1(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+            required
+          />
+        </div>
+
+        {/* Address Line 2 */}
+        <div className="mb-4">
+          <label className="block mb-1 font-medium">Address Line 2</label>
+          <input
+            type="text"
+            value={add2}
+            onChange={(e) => setAdd2(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
+          />
+        </div>
+
+        {/* Zip Code */}
         <div className="mb-4">
           <label className="block mb-1 font-medium">Zip Code</label>
           <input
@@ -80,6 +98,7 @@ const AddressCard = () => {
           />
         </div>
 
+        {/* Address Type */}
         <div className="mb-4">
           <label className="block mb-1 font-medium">Address Type</label>
           <select
@@ -94,6 +113,7 @@ const AddressCard = () => {
           </select>
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
@@ -104,5 +124,6 @@ const AddressCard = () => {
     </div>
   );
 };
+
 
 export default AddressCard;

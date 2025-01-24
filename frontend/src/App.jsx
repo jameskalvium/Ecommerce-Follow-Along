@@ -21,7 +21,7 @@ function App() {
         <Route path="/update-form/:id" element={<UpdateForm />} />
         <Route path='/product-details/:id' element={<SinglePageProduct />}/>
         <Route path = "/cart" element={<CartPage/>}/>
-        <Route path = "/address" element ={<AddressCard/>}></Route>
+        <Route path = "/add-address" element ={<AddressCard/>}></Route>
       </Routes>
     </>
   );
