@@ -8,6 +8,8 @@ import Navbar from './components/Navbar/Navbar';
 import SinglePageProduct from './Pages/SingleProductPage';
 import CartPage from './Pages/CartPage'
 import AddressCard from './components/Addresscomp/AddressCard';
+import SelectAddress from './Pages/SelectAddress'
+import OrderConfirmation from './Pages/OrderConfirmation'
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path='/product-details/:id' element={<SinglePageProduct />}/>
         <Route path = "/cart" element={<CartPage/>}/>
         <Route path = "/address" element ={<AddressCard/>}></Route>
+        <Route path = "/select-address" element ={<SelectAddress />}></Route>
+        <Route path = "/order-confirmation" element ={<OrderConfirmation />}></Route>
       </Routes>
     </>
   );

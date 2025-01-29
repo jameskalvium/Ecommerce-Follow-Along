@@ -6,7 +6,9 @@ const {
   verifyUserController,
   signup,
   login,
-  getUserData
+  getUserData,
+  AddAddressController,
+  GetAddressController,
 } = require('../controllers/user.controller.js');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'temp-uploads/' });
@@ -22,5 +24,6 @@ router.post('/signup',upload.single('file'), signup);
 router.post('/login', login);
 
 router.get('/user-data', verifyUser, getUserData);
+router.get('/get-addresses', verifyUser, GetAddressController)
 
 module.exports = router;
