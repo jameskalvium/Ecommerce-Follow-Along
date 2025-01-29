@@ -192,6 +192,22 @@ const getUserData = async (req, res) => {
   }
 };
 
+const GetAddressController = async (req,res) =>{
+  const userId = req.UserId;
+  try{
+    if(!mongoose,Types.ObjectId.isValid(userId)){
+      return res.status(401).send({message: "please signup"})
+    }
+    return res.status(200).send({
+      userInfo:checkUser,
+      message:'Success',
+      success: true
+,    })
+  }catch (er){
+    return res.status(500).send({message:er.message})
+  }
+}
+
 module.exports = {
   CreateUser,
   verifyUserController,

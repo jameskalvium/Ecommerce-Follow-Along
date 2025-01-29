@@ -23,6 +23,9 @@ function CardPage() {
   }, []);
   return (
     <div>
+      <button className = "bg slate -800 text white px t py t rounded md ml 40">
+        
+      </button>
       {UsersCartData?.map((singleCartObject, index) => {
         return (
           <div key={index}>
