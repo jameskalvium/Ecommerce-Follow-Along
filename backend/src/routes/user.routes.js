@@ -24,6 +24,6 @@ router.post('/signup',upload.single('file'), signup);
 router.post('/login', login);
 
 router.get('/user-data', verifyUser, getUserData);
-router.get('/get-address', verifyUser, GetAddressController)
+router.get('/get-addresses', verifyUser, GetAddressController)
 
 module.exports = router;

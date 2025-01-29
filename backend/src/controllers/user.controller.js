@@ -196,7 +196,11 @@ const GetAddressController = async (req,res) =>{
   const userId = req.UserId;
   try{
     if(!mongoose,Types.ObjectId.isValid(userId)){
-      return res.status(401).send({message: "please signup"})
+      return res.status(401).send({message: "please login, unauthorised"})
+    }
+    const checkUser = await UserModel.findOne({_id:userId},{address:1})
+    if(!checkUser){
+      return res.status(401).send({message:'Please signup, unauthorised'})
     }
     return res.status(200).send({
       userInfo:checkUser,
@@ -214,4 +218,8 @@ module.exports = {
   signup,
   login,
   getUserData,
+  AddAddressController,
+  DeleteAddyController,
+  GetAddressController
+  
 };

@@ -1,25 +1,27 @@
-import { DeleteIcon } from "lucide-react";
-import { useEffect } from "react";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import AddressList from '../components/AllAddress/Addressess';
 
-export default funciton SelectAddress(){
-    const [AllAddress, setAllAddress]
-    useEffect(()=>{
-        const fetchAddress = async ()=>{
-            const token = localStorage.getItem('token');
-            if(!token){
-                alert("token missing please login")
-            }
-            const response = await axios.get(
-                `https://localhost:8080/user/get-address`?token=${token}
-            );
-            console.log(response.data.userInfo);
-        }
-        fetchAddress();
-
-    },[])
-    return (
-        <div>
-             <AddressList address ={AllAddressddress}/>
-        </div>
-    )
+export default function SelectAddres() {
+  const [AllAddresses, setAllAddresses] = useState([]);
+  useEffect(() => {
+    //api call to get addresses
+    const fetchAddress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('token missing please login again');
+      }
+      const response = await axios.get(
+        `http://localhost:8080/user/get-addresses?token=${token}`
+      );
+      console.log(response.data.userInfo);
+      setAllAddresses(response.data.userInfo.address);
+    };
+    fetchAddress();
+  }, []);
+  return (
+    <div>
+      <AddressList addresses={AllAddresses} />;
+    </div>
+  );
 }
