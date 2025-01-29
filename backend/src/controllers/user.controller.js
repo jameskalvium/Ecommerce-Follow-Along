@@ -218,8 +218,6 @@ module.exports = {
   signup,
   login,
   getUserData,
-  AddAddressController,
-  DeleteAddyController,
   GetAddressController
   
 };

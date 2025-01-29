@@ -7,7 +7,6 @@ const {
   signup,
   login,
   getUserData,
-  AddAddressController,
   GetAddressController,
 } = require('../controllers/user.controller.js');
 const jwt = require('jsonwebtoken');
