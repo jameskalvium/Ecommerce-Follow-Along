@@ -24,5 +24,6 @@ router.post('/login', login);
 
 router.get('/user-data', verifyUser, getUserData);
 router.get('/get-addresses', verifyUser, GetAddressController)
+// router.get('/order-confirmation',verifyUser,)
 
 module.exports = router;
