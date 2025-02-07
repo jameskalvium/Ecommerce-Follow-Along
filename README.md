@@ -193,4 +193,10 @@ ________________________________________
   1. I have created a new route for order confirmation 
   2. Made an Order Confirmation component.
 
-  
+
+  ## Milestone25
+
+    1. Created order controller 
+    2. Created order model 
+    3. Created order route
+    
