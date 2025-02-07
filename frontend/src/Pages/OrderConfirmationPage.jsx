@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartCard from '../components/ProductCard/CartCard';
 export default function OrderConfirmation() {
   const [cartData, setUsersCartData] = useState([]);
@@ -7,6 +8,7 @@ export default function OrderConfirmation() {
   const [userAddress, setAddress] = useState(
     JSON.parse(localStorage.getItem('address')) || {}
   );
+  const navigate = useNavigate();
   // totoal
   // address
   // cart data
@@ -31,6 +33,23 @@ export default function OrderConfirmation() {
 
     getCartData();
   }, []);
+
+  const OrderConfirmation = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return alert('Token is missing please signup');
+    }
+    const response = await axios.post(
+      `http://localhost:8080/orders/confirm-order?token=${token}`,
+      {
+        Items: cartData,
+        address: userAddress,
+        totalAmount: total,
+      }
+    );
+    navigate('/order-history');
+    console.log(response);
+  };
 
   return (
     <div>
@@ -78,7 +97,7 @@ export default function OrderConfirmation() {
             })}
         </div>
         <div className="flex justify-center mt-5">
-          <button className="px-5 py-2 rounded-lg bg-blue-500 text-white hover:bg-green-500">
+          <button className="px-5 py-2 rounded-lg bg-blue-500 text-white hover:bg-green-500" onClick={OrderConfirmation}>
             Confirm order
           </button>
         </div>
