@@ -8,6 +8,8 @@ const cors = require('cors');
 
 const cartRouter = require('./routes/cart.route.js')
 
+
+const orderRouter = require('./routes/order.route.js')
 if (process.env.NODE_ENV !=='PRODUCTION'){
     require('dotenv').config({
         path:'/src/config/.env'
@@ -33,6 +35,6 @@ app.use('/user',userRouter)
 app.use('/product', productRouter);
 
 app.use('/cart', cartRouter);
-
+app.use('/orders', orderRouter);
 
 module.exports = app;
