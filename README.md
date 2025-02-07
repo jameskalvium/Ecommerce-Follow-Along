@@ -199,4 +199,14 @@ ________________________________________
     1. Created order controller 
     2. Created order model 
     3. Created order route
-    
+
+
+## Milestone26
+  1. Added order router 
+  2. Made getuserController
+  3. Made User order-data 
+
+## Milestone27
+  
+  1. created order history page
+  

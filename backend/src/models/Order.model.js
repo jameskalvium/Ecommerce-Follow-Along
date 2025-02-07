@@ -8,10 +8,12 @@ const orderSchema = new mongoose.Schema(
      ref: 'User',
      required: true,
    },
-   orderItems: [
-     { type: mongoose.Schema.Types.ObjectId, ref: 'Product', require: true },
-   ],
-   shippingAddress: {
+   orderItems: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+        require: true },
+
+      shippingAddress: {
      country: { type: String, required: true },
      city: { type: String, required: true },
      address1: { type: String, required: true },

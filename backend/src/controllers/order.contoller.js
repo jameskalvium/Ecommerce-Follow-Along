@@ -1,6 +1,7 @@
-const { default:mongoose} = require('mongoose');
+const {mongoose} = require('mongoose');
 const OrderModel = require('../models/Order.model.js');
 const userModel = require('../models/user.model.js');
+const CartModel = require('../models/cart.model.js');
 
 async function CreateOrderContoller(req, res){
     const userId = req.UserId;
@@ -21,16 +22,26 @@ async function CreateOrderContoller(req, res){
             return res.status(400).send({message:'Items not present', success:false});
         } 
 
-        const order = await OrderModel.create({
-            user:userId,
-            orderItems:Items,
-            shippingAddress:address,
-            totalAmount:totalAmount
-        })
-        return res.status(201).send({message:'Data fetched successfully', success:true, order})
+        const order = Items.map(async (ele) => {
+            return await OrderModel.create({
+              user: userId,
+              orderItems: ele.productId._id,
+              shippingAddress: address,
+              totalAmount: totalAmount,
+            });
+          });
+          await Promise.all(order);
 
-    }
-    catch(err){
+        const ItemsMapped = Items.map((eachItem)=>{
+            return await CartModel.findByIdAndDelete({_id: eachItem._id});
+        })
+        const checkDeletedItems = await Promise.all(ItemsMapped);
+        return res.status(201).send({
+            message: 'Data Successfully fetched',
+            success: true,
+            checkDeletedItems,
+    })
+    }catch(err){
         return res.status(500).send({message:err.message, success:false});
     }
 }
@@ -52,7 +63,12 @@ async function GetUserOrdersController(req, res) {
           .send({ message: 'Please sign up', success: false });
       }
   
-      const orders = await OrderModel.find({ user: userId });
+      const orders = await OrderModel.find({
+        user: userId,
+        orderStatus:{$ne : 'Cancelled'},
+
+     }).populate('orderitems');
+     
       return res
         .status(200)
         .send({ message: 'Data Successfully fetched', success: true, orders });
