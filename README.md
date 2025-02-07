@@ -188,4 +188,9 @@ ________________________________________
   1. We have created a select address component and added a route for it
   2. We have created controller for getting the address.
 
+## Milestone24
+
+  1. I have created a new route for order confirmation 
+  2. Made an Order Confirmation component.
+
   
