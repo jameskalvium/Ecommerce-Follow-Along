@@ -20,6 +20,7 @@ function OrderHistory() {
   useEffect(() => {
     fetchedOrderedProducts();
   }, []);
+
   const handleCancel = async (id) => {
     console.log(id);
     const token = localStorage.getItem('token');
@@ -46,7 +47,7 @@ function OrderHistory() {
               discountedPrice={singleCartObject.orderItems.discountedPrice}
               id={singleCartObject._id}
               orderStatus={singleCartObject.orderStatus}
-              createdBy={'nayan@k.com'}
+              createdBy={'james@.com'}
               handleCancel={handleCancel}
             />
           </div>

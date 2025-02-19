@@ -6,7 +6,8 @@ router.post('/confirm-order', verifyToken)
 
 const {
     GetUserOrdersController, 
-    CreateOrderController
+    CreateOrderController,
+    CancelOrder
 } = require('../controllers/order.controller.js');
 
 router.get('/user-orders-data', verifyUser, GetUserOrdersController);
