@@ -213,3 +213,8 @@ ________________________________________
 ## Milestone28
 
   1. We have edited the cartpage 
+
+## Milestone29 && Milestone30
+  1. we have created the Razorpay
+  2. we have added the payment route
+  3. we have added the payment controller

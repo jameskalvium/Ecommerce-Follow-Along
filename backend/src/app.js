@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const cartRouter = require('./routes/cart.route.js')
-
+const PaymentRouter = require('./routes/Payment.route.js');
 
 const orderRouter = require('./routes/order.route.js')
 if (process.env.NODE_ENV !=='PRODUCTION'){
@@ -36,5 +36,7 @@ app.use('/product', productRouter);
 
 app.use('/cart', cartRouter);
 app.use('/orders', orderRouter);
+
+app.use('/payment', PaymentRouter);
 
 module.exports = app;
