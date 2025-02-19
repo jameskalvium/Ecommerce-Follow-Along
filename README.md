@@ -218,3 +218,7 @@ ________________________________________
   1. we have created the Razorpay
   2. we have added the payment route
   3. we have added the payment controller
+
+## Milestone31
+
+  1. We have used Redux in the app
