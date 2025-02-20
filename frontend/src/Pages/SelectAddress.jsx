@@ -15,7 +15,7 @@ export default function SelectAddres() {
         alert('token missing please login again');
       }
       const response = await axios.get(
-        `http://localhost:8080/user/get-addresses?token=${token}`
+        `http://localhost:8080/user/get-address?token=${token}`
       );
       console.log(response.data.userInfo);
       setAllAddresses(response.data.userInfo.address);
