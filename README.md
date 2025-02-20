@@ -222,3 +222,7 @@ ________________________________________
 ## Milestone31
 
   1. We have used Redux in the app
+
+## Milestone32
+
+  1. We used Global state management using Redux in this milestone

@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CartCard from '../component/ProductCard/CartCard';
+import { useSelector } from 'react-redux';
 
 function OrderHistory() {
+  const data = useSelector((state) => state.user);
+
   const [OrderedData, SetOrderedData] = useState([]);
   const fetchedOrderedProducts = async () => {
     const token = localStorage.getItem('token');
