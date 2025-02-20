@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {useSelector} from 'react-redux'
+
 const Card = ({ children, className = '' }) => (
   <div className={`bg-white rounded-lg shadow-lg p-6 ${className}`}>
     {children}
@@ -19,19 +21,39 @@ const InfoSection = ({ icon, label, value }) => (
 );
 export function ProfileCard() {
   const [userData, setUserData] = useState({});
-  useEffect(() => {
-    const getUserData = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        return alert('Token missing login');
-      }
-      const response = await axios.get(
-        `http://localhost:8080/user/user-data?token=${token}`
-      );
-      setUserData(response.data.data);
-    };
+  const getUserData = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return alert('Token missing login');
+    }
+    const response = await axios.get(
+      `http://localhost:8080/user/user-data?token=${token}`
+    );
+    setUserData(response.data.data);
+  };
+    const data = useSelector((state)=> state.user)
+    console.log(data);
+
+    useEffect(() => {
     getUserData();
   }, []);
+
+  const handleDeleteAddy = async(id) =>{
+    const token = localStorage.getItemI('token');
+    try {
+      if (!token) {
+        return alert('Token missing');
+      }
+      const response = await axios.delete(
+        `http://localhost:8080/user/delete-address/${id}?token=${token}`
+      );
+      getUserData();
+    } catch (er) {
+      console.log(er.response.message);
+    }
+  };
+  
+
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <Card className="max-w-2xl mx-auto">
@@ -128,9 +150,28 @@ export function ProfileCard() {
             value={
               userData?.address?.length > 0 ? (
                 <ul className="list-disc list-inside">
-                  {/* {userData.address.map((addr, index) => (
-                      <li key={index}>{addr}</li>
-                    ))} */}
+                 { userData.address.map((SingleAddy, index)=>(
+                    <div key={index}>
+                     <button 
+                     onClick={() => handleDeleteAddy(SingleAddy._id)} 
+                     className="text-red-500 hover:text-red-700 text-sm font-semibold transition-colors duration-200">
+                        Delete 
+                      </button>
+                      <li key={SingleAddy._id}>City: {SingleAddy.city}</li>
+                      <li key={SingleAddy._id}>
+                        Country: {SingleAddy.country}
+                      </li>
+                      <li key={SingleAddy._id}>
+                        Address 1: {SingleAddy.address1}
+                      </li>
+                      <li key={SingleAddy._id}>
+                        Address 2: {SingleAddy.address2}
+                      </li>
+                      <li key={SingleAddy._id}>
+                        Pin Code: {SingleAddy.zipCode}
+                      </li>
+                    </div>
+                  ))}
                 </ul>
               ) : (
                 <span className="text-gray-400 italic">

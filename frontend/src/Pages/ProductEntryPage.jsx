@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Upload } from 'lucide-react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 function ProductEntryPage() {
   
@@ -14,6 +15,9 @@ function ProductEntryPage() {
     quantity: 0,
     category: '',
   });
+
+  const data = useSelector((state) =>state.user);
+
   const [errorInput, setInputError] = useState('');
   const [Images, setImages] = useState([]);
 
