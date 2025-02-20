@@ -192,32 +192,74 @@ const getUserData = async (req, res) => {
   }
 };
 
-const GetAddressController = async (req,res) =>{
+const AddAddressController = async (req,res)=>{
   const userId = req.UserId;
+  const{city, country, address1, address2, zipCode, addressType } = req.body;
   try{
-    if(!mongoose,Types.ObjectId.isValid(userId)){
-      return res.status(401).send({message: "please login, unauthorised"})
+    const userFindOne = await userModel.findOne({_id:userId});
+    if(!userFindOne){
+      return res
+      .status(404)
+      .send({message:'User not found', success:false});
     }
-    const checkUser = await UserModel.findOne({_id:userId},{address:1})
-    if(!checkUser){
-      return res.status(401).send({message:'Please signup, unauthorised'})
+    const userAddress={
+      country,
+      city,
+      address1,
+      address2,
+      zipCode,
+      addressType,
     }
-    return res.status(200).send({
-      userInfo:checkUser,
-      message:'Success',
-      success: true
-,    })
-  }catch (er){
-    return res.status(500).send({message:er.message})
+    userFindOne.address.push(userAddress);
+    const response = await userFindOne.save();
+    return res
+    .status(201)
+    .send({message:'User address added successfully', success:true, response});
+  }
+  catch(err){
+    return res.status(500).send({message:err.message})
   }
 }
 
-module.exports = {
+const DeleteAddyController = async (req, res) => {
+  const userId = req.UserId;
+  const { id } = req.params;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res
+        .status(401)
+        .send({ message: 'Un-Authorised please signup', success: false });
+    }
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res
+        .status(404)
+        .send({ message: 'Address Id is in-valid', sucess: false });
+    }
+    const checkIfUSerPresent = await userModel.findOne({ _id: userId });
+    if (!checkIfUSerPresent) {
+      return res
+        .status(401)
+        .send({ message: 'Un-Authorised please signup', sucess: false });
+    }
+    const response = await userModel.findOneAndUpdate(
+      { _id: userId },
+      { $pull: { address: { _id: id } } },
+      { new: true }
+    );
+    return res
+      .status(201)
+      .send({ message: 'User Address deleted', success: true, response });
+  } catch (er) {
+    return res.status(500).send({ message: er.message, sucess: false });
+  }
+};
+
+
+module.exports = { 
   CreateUser,
   verifyUserController,
   signup,
   login,
   getUserData,
-  GetAddressController
-  
-};
+  AddAddressController,
+  DeleteAddyController };

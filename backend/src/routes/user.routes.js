@@ -7,7 +7,8 @@ const {
   signup,
   login,
   getUserData,
-  GetAddressController,
+  AddAddressController,
+  DeleteAddyController,
 } = require('../controllers/user.controller.js');
 const jwt = require('jsonwebtoken');
 const upload = multer({ dest: 'temp-uploads/' });
@@ -23,7 +24,8 @@ router.post('/signup',upload.single('file'), signup);
 router.post('/login', login);
 
 router.get('/user-data', verifyUser, getUserData);
-router.get('/get-addresses', verifyUser, GetAddressController)
+router.post('/add-addresses', verifyUser, AddAddressController)
+router.delete('/delete-address/:id', verifyUser, DeleteAddyController);
 // router.get('/order-confirmation',verifyUser,)
 
 module.exports = router;

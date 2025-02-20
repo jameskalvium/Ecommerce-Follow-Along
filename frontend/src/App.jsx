@@ -6,7 +6,7 @@ import ProductEntryPage from './Pages/ProductEntryPage';
 import UpdateForm from './Pages/UpdateForm';
 import Navbar from './components/Navbar/Navbar';
 import SinglePageProduct from './Pages/SingleProductPage';
-import CartPage from './Pages/CartPage'
+import CartPage from './Pages/cartPage';
 import ProfilePage from './Pages/Profile';
 import AddressCard from './components/Addresscomp/AddressCard';
 import SelectAddress from './Pages/SelectAddress'
@@ -25,7 +25,7 @@ function App() {
         <Route path='/product-details/:id' element={<SinglePageProduct />}/>
         <Route path = "/cart" element={<CartPage />}/>
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path = "/address" element ={<AddressCard/>}></Route>
+        <Route path="/add-address" element={<AddressCard />} />
         <Route path = "/select-address" element ={<SelectAddress />}></Route>
         <Route path = "/order-confirmation" element ={<OrderConfirmation />}></Route>
       </Routes>
