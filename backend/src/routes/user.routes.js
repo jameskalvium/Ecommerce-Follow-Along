@@ -8,6 +8,7 @@ const {
   login,
   getUserData,
   AddAddressController,
+  GetAddressController,
   DeleteAddyController,
 } = require('../controllers/user.controller.js');
 const jwt = require('jsonwebtoken');
@@ -24,7 +25,9 @@ router.post('/signup',upload.single('file'), signup);
 router.post('/login', login);
 
 router.get('/user-data', verifyUser, getUserData);
-router.post('/add-addresses', verifyUser, AddAddressController)
+router.post('/add-address', verifyUser, AddAddressController)
+router.get('/get-address', verifyUser, GetAddressController);
+
 router.delete('/delete-address/:id', verifyUser, DeleteAddyController);
 // router.get('/order-confirmation',verifyUser,)
 

@@ -1,9 +1,10 @@
 
-import React, { useEffect, useState } from 'react';
+import {useState, useEffect } from 'react';
 import axios from 'axios';
 import CartCard from '../components/ProductCard/CartCard';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 
 function CardPage() {
   const [UsersCartData, setUsersCartData] = useState([]);

@@ -196,7 +196,7 @@ const AddAddressController = async (req,res)=>{
   const userId = req.UserId;
   const{city, country, address1, address2, zipCode, addressType } = req.body;
   try{
-    const userFindOne = await userModel.findOne({_id:userId});
+    const userFindOne = await UserModel.findOne({_id:userId});
     if(!userFindOne){
       return res
       .status(404)
@@ -220,6 +220,26 @@ const AddAddressController = async (req,res)=>{
     return res.status(500).send({message:err.message})
   }
 }
+const GetAddressController = async (req, res) => {
+  const userId = req.UserId;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(401).send({ message: 'Please login, un-Authorised' });
+    }
+    const checkUser = await UserModel.findOne({ _id: userId }, { address: 1 });
+    if (!checkUser) {
+      return res.status(401).send({ message: 'Please signup, un-Authorised' });
+    }
+
+    return res.status(200).send({
+      userInfo: checkUser,
+      message: 'Success',
+      success: true,
+    });
+  } catch (er) {
+    return res.status(500).send({ message: er.message });
+  }
+};
 
 const DeleteAddyController = async (req, res) => {
   const userId = req.UserId;
@@ -262,4 +282,6 @@ module.exports = {
   login,
   getUserData,
   AddAddressController,
-  DeleteAddyController };
+  DeleteAddyController,
+  GetAddressController,
+ };

@@ -1,4 +1,4 @@
-const {mongoose} = require('mongoose');
+const mongoose = require('mongoose');
 const OrderModel = require('../models/Order.model.js');
 const userModel = require('../models/user.model.js');
 const CartModel = require('../models/cart.model.js');
@@ -32,7 +32,7 @@ async function CreateOrderContoller(req, res){
           });
           await Promise.all(order);
 
-        const ItemsMapped = Items.map((eachItem)=>{
+        const ItemsMapped = Items.map(async(eachItem)=>{
             return await CartModel.findByIdAndDelete({_id: eachItem._id});
         })
         const checkDeletedItems = await Promise.all(ItemsMapped);
