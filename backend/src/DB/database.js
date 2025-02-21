@@ -1,11 +1,11 @@
-const path = require('path');
+const path = require('node:path');
 
 if (process.env.NODE_ENV !=='PRODUCTION'){
     require('dotenv').config({
-        path: path.resolve(__dirname,'../config/.env'),
-    })
-}
-
+        path: path.join(__dirname, '../config/.env'),    })
+    }
+    
+require('dotenv').config();
 
 const mongoose = require('mongoose')
 

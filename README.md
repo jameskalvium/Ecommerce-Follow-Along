@@ -230,3 +230,11 @@ ________________________________________
 ## Milestone33
 
   1. Improved user authentication using JWT token generation and secure cookie storage.
+
+## Milestone34&Milestone35
+
+  1. Used JWT  in login and any communication between the client and the server.
+  2. stored JWT in cookie
+
+  1. deployment server 
+  2. deployment client 
