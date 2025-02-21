@@ -226,3 +226,7 @@ ________________________________________
 ## Milestone32
 
   1. We used Global state management using Redux in this milestone
+
+## Milestone33
+
+  1. Improved user authentication using JWT token generation and secure cookie storage.
